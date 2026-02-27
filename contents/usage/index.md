@@ -1,6 +1,6 @@
 # **Chạy một job đơn giản**
 
-## **Dùng `srun` chạy trực tiếp:**
+### **Dùng `srun` chạy trực tiếp:**
 
 `srun` là lệnh được dùng để chạy một chương trình hoặc lệnh trực tiếp trên hệ thống tính toán sử dụng SLURM. Khi dùng `srun`, bạn sẽ yêu cầu tài nguyên (CPU, RAM, GPU,...) và SLURM sẽ cấp phát tài nguyên tương ứng để chạy chương trình. `srun` phù hợp cho các tác vụ nhanh, thử nghiệm hoặc chạy tương tác trong môi trường dòng lệnh. Ví dụ được minh họa bên dưới.
 
@@ -11,7 +11,7 @@ srun --mem=4G --gres=gpu:1 --pty bash
 ```
 Khi chạy lệnh trên, yêu cầu sẽ vào hàng đợi, nếu SLURM tìm đủ tài nguyên để cấp phát, job này sẽ được khởi chạy và khi đó người dùng sẽ được kết nối đến một trong các compute nodes và truy cập tới vùng tài nguyên được yêu cầu bao gồm 4GB RAM và 1 GPU.
 
-## **Dùng `sbatch` để gửi script:**
+### **Dùng `sbatch` để gửi script:**
 
 `sbatch` là lệnh dùng để gửi một script (thường là file .sh) vào hệ thống SLURM để chạy không đồng bộ. Nghĩa là bạn không cần chờ kết quả ngay trên terminal - hệ thống sẽ xếp hàng, cấp phát tài nguyên khi có thể và chạy script của bạn. `sbatch` phù hợp cho các tác vụ dài, tốn nhiều thời gian, phức tạp hoặc cần nhiều tài nguyên.
 

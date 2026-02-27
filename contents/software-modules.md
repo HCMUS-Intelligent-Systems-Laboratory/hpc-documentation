@@ -3,7 +3,7 @@ label: Kiểm tra trạng thái job
 order: 0
 ---
 
-# **Kiểm tra trạng thái Job***
+# **Kiểm tra trạng thái Job**
 Sau khi nộp job lên SLURM bằng lệnh `sbatch`, nên kiểm tra danh sách các job đang chạy hoặc đang chờ trong hàng đợi, người dùng có thể sử dụng lệnh:
 ```
 $ squeue -u <username>
