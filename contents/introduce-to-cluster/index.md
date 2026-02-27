@@ -1,6 +1,5 @@
 # **Khái niệm và yêu cầu cơ bản**
 
-
 ### **Các khái niệm cơ bản**
 
 - Job: Tác vụ hoặc chương trình bạn muốn hệ thống chạy.
