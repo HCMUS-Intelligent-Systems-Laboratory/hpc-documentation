@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/hpc-documentation">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825508314977">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825508484833">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.0.1">
@@ -29,11 +29,11 @@
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link id="retype-favicon" rel="icon" href="../../static/logo.webp" />
-    <link href="../../resources/css/retype.css?v=4.0.1.825508314977" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.0.1.825508484833" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.0.1.825508314977" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.0.1.825508484833" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.0.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.0.1.825508314977" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.0.1.825508484833" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -162,10 +162,10 @@
     </h1>
 </doc-anchor-target>
 <doc-anchor-target id="dùng-srun-chạy-trực-tiếp">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#dùng-srun-chạy-trực-tiếp">#</doc-anchor-trigger>
         <span><strong>Dùng <code translate="no" v-pre>srun</code> chạy trực tiếp:</strong></span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p><code translate="no" v-pre>srun</code> là lệnh được dùng để chạy một chương trình hoặc lệnh trực tiếp trên hệ thống tính toán sử dụng SLURM. Khi dùng <code translate="no" v-pre>srun</code>, bạn sẽ yêu cầu tài nguyên (CPU, RAM, GPU,...) và SLURM sẽ cấp phát tài nguyên tương ứng để chạy chương trình. <code translate="no" v-pre>srun</code> phù hợp cho các tác vụ nhanh, thử nghiệm hoặc chạy tương tác trong môi trường dòng lệnh. Ví dụ được minh họa bên dưới.</p>
 <ul>
@@ -176,10 +176,10 @@
 </doc-codeblock></div>
 <p>Khi chạy lệnh trên, yêu cầu sẽ vào hàng đợi, nếu SLURM tìm đủ tài nguyên để cấp phát, job này sẽ được khởi chạy và khi đó người dùng sẽ được kết nối đến một trong các compute nodes và truy cập tới vùng tài nguyên được yêu cầu bao gồm 4GB RAM và 1 GPU.</p>
 <doc-anchor-target id="dùng-sbatch-để-gửi-script">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#dùng-sbatch-để-gửi-script">#</doc-anchor-trigger>
         <span><strong>Dùng <code translate="no" v-pre>sbatch</code> để gửi script:</strong></span>
-    </h2>
+    </h3>
 </doc-anchor-target>
 <p><code translate="no" v-pre>sbatch</code> là lệnh dùng để gửi một script (thường là file .sh) vào hệ thống SLURM để chạy không đồng bộ. Nghĩa là bạn không cần chờ kết quả ngay trên terminal - hệ thống sẽ xếp hàng, cấp phát tài nguyên khi có thể và chạy script của bạn. <code translate="no" v-pre>sbatch</code> phù hợp cho các tác vụ dài, tốn nhiều thời gian, phức tạp hoặc cần nhiều tài nguyên.</p>
 <p>Một script SLURM cần phải bao gồm ba phần chính:</p>
