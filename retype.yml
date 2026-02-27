@@ -1,6 +1,6 @@
 input: .
 output: .retype
-url: hcmus-intelligent-systems-laboratory.github.io
+url: https://hcmus-intelligent-systems-laboratory.github.io/hpc-documentation
 favicon: static/logo.webp
 branding:
   title: HPC guide
