@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/hpc-documentation">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825508070537">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825508314977">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.0.1">
@@ -13,7 +13,7 @@
     <!-- Primary Meta Tags -->
     <title>Chạy một job đơn giản</title>
     <meta name="title" content="Chạy một job đơn giản">
-    <meta name="description" content="Dùng srun chạy trực tiếp:">
+    <meta name="description" content="srun là lệnh được dùng để chạy một chương trình hoặc lệnh trực tiếp trên hệ thống tính toán sử dụng SLURM. Khi dùng srun, bạn sẽ yêu cầu tài nguyên (CPU,">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://hcmus-intelligent-systems-laboratory.github.io/hpc-documentation/contents/usage/">
@@ -22,18 +22,18 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hcmus-intelligent-systems-laboratory.github.io/hpc-documentation/contents/usage/">
     <meta property="og:title" content="Chạy một job đơn giản">
-    <meta property="og:description" content="Dùng srun chạy trực tiếp:">
+    <meta property="og:description" content="srun là lệnh được dùng để chạy một chương trình hoặc lệnh trực tiếp trên hệ thống tính toán sử dụng SLURM. Khi dùng srun, bạn sẽ yêu cầu tài nguyên (CPU,">
     <meta property="og:site_name" content="HPC guide">
     <meta property="og:locale" content="en_US">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link id="retype-favicon" rel="icon" href="../../static/logo.webp" />
-    <link href="../../resources/css/retype.css?v=4.0.1.825508070537" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.0.1.825508314977" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.0.1.825508070537" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.0.1.825508314977" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.0.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.0.1.825508070537" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.0.1.825508314977" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -161,9 +161,12 @@
         <span><strong>Chạy một job đơn giản</strong></span>
     </h1>
 </doc-anchor-target>
-<ol type="a" start="1">
-<li>Dùng <code translate="no" v-pre>srun</code> chạy trực tiếp:</li>
-</ol>
+<doc-anchor-target id="dùng-srun-chạy-trực-tiếp">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dùng-srun-chạy-trực-tiếp">#</doc-anchor-trigger>
+        <span><strong>Dùng <code translate="no" v-pre>srun</code> chạy trực tiếp:</strong></span>
+    </h2>
+</doc-anchor-target>
 <p><code translate="no" v-pre>srun</code> là lệnh được dùng để chạy một chương trình hoặc lệnh trực tiếp trên hệ thống tính toán sử dụng SLURM. Khi dùng <code translate="no" v-pre>srun</code>, bạn sẽ yêu cầu tài nguyên (CPU, RAM, GPU,...) và SLURM sẽ cấp phát tài nguyên tương ứng để chạy chương trình. <code translate="no" v-pre>srun</code> phù hợp cho các tác vụ nhanh, thử nghiệm hoặc chạy tương tác trong môi trường dòng lệnh. Ví dụ được minh họa bên dưới.</p>
 <ul>
 <li>Yêu cầu 4GB RAM và 1 GPU:</li>
@@ -172,9 +175,12 @@
 <pre translate="no" class="language-none"><code v-pre class="language-none">srun --mem=4G --gres=gpu:1 --pty bash</code></pre>
 </doc-codeblock></div>
 <p>Khi chạy lệnh trên, yêu cầu sẽ vào hàng đợi, nếu SLURM tìm đủ tài nguyên để cấp phát, job này sẽ được khởi chạy và khi đó người dùng sẽ được kết nối đến một trong các compute nodes và truy cập tới vùng tài nguyên được yêu cầu bao gồm 4GB RAM và 1 GPU.</p>
-<ol type="a" start="2">
-<li>Dùng <code translate="no" v-pre>sbatch</code> để gửi script:</li>
-</ol>
+<doc-anchor-target id="dùng-sbatch-để-gửi-script">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dùng-sbatch-để-gửi-script">#</doc-anchor-trigger>
+        <span><strong>Dùng <code translate="no" v-pre>sbatch</code> để gửi script:</strong></span>
+    </h2>
+</doc-anchor-target>
 <p><code translate="no" v-pre>sbatch</code> là lệnh dùng để gửi một script (thường là file .sh) vào hệ thống SLURM để chạy không đồng bộ. Nghĩa là bạn không cần chờ kết quả ngay trên terminal - hệ thống sẽ xếp hàng, cấp phát tài nguyên khi có thể và chạy script của bạn. <code translate="no" v-pre>sbatch</code> phù hợp cho các tác vụ dài, tốn nhiều thời gian, phức tạp hoặc cần nhiều tài nguyên.</p>
 <p>Một script SLURM cần phải bao gồm ba phần chính:</p>
 <ul>
@@ -205,435 +211,6 @@ python myscript.py                  # Chạy chương trình Python</code></pre>
 <p>Trong đó <code translate="no" v-pre>job.slurm</code> là tên của file script SLURM.
 Để kiểm tra kết quả của quá trình chạy script bằng lệnh <code translate="no" v-pre>sbatch</code>, các output của các câu lệnh trong script sẽ được ghi vào 1 file <code translate="no" v-pre>&lt;job_id&gt;.out</code>.</p>
 <p>Lưu ý quan trọng: Để tiến hành huấn luyện một mô hình AI hoặc chạy một script nào đó trên SLURM, bạn nên chạy các câu lệnh của mình bằng lệnh <code translate="no" v-pre>srun</code> trước và đảm bảo rằng toàn bộ các câu lệnh trong script của bạn chạy đúng và trả ra kết quả, sau đó bạn đưa các câu lệnh theo đúng trình tự vào script của lệnh sbatch và nộp lên để SLURM xử lý ngầm.</p>
-<doc-anchor-target id="giới-thiệu-slurm">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#giới-thiệu-slurm">#</doc-anchor-trigger>
-        <span><strong>Giới thiệu Slurm</strong></span>
-    </h1>
-</doc-anchor-target>
-<p>Trên tất cả các hệ thống, người dùng chạy chương trình bằng cách gửi script tới Slurm. Slurm script phải thực hiện ba việc:</p>
-<ol>
-<li>Quy định các yêu cầu về tài nguyên cho job</li>
-<li>cài đặt môi trường</li>
-<li>Chỉ định job sẽ được thực hiện dưới dạng lệnh shell</li>
-</ol>
-<p>Dưới đây là tập lệnh Slurm mẫu để chạy mã Python bằng môi trường Conda:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">#!/bin/bash
-#SBATCH --job-name=myjob         # create a short name for your job
-#SBATCH --nodes=1                # node count
-#SBATCH --ntasks=1               # total number of tasks across all nodes
-#SBATCH --cpus-per-task=1        # cpu-cores per task (&gt;1 if multi-threaded tasks)
-#SBATCH --mem-per-cpu=2G         # memory per cpu-core (4G is default)
-#SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
-
-module purge
-module load anaconda3/2023.9
-conda activate pytools-env
-
-python myscript.py</code></pre>
-</doc-codeblock></div>
-<ul>
-<li>Dòng đầu tiên của tập lệnh Slurm chỉ định shell Unix sẽ được sử dụng.</li>
-<li>Tiếp theo là một loạt lệnh #SBATCH đặt ra các yêu cầu về tài nguyên và các tham số khác của job.</li>
-<li>Tập lệnh trên yêu cầu 1 lõi CPU và 4 GB bộ nhớ trong thời gian chạy 1 phút. Những thay đổi cần thiết đối với môi trường được thực hiện bằng cách tải module môi trường anaconda3/ và kích hoạt một môi trường Conda cụ thể.</li>
-<li>Cuối cùng, job cần thực hiện, tức là thực thi tập lệnh Python, được chỉ định ở dòng cuối cùng.</li>
-</ul>
-<p>Xem bên dưới để biết thông tin về sự tương ứng giữa các tác vụ và lõi CPU. Nếu job của bạn không hoàn thành trước thời hạn quy định thì nó sẽ bị hủy. Bạn nên sử dụng giá trị chính xác cho thời gian ước lượng nhưng thêm thêm 20% để đảm bảo an toàn.</p>
-<p>Một tập lệnh job có tên <code translate="no" v-pre>job.slurm</code> được gửi tới bộ lập lịch Slurm bằng lệnh <code translate="no" v-pre>sbatch</code>:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">$ sbatch job.slurm</code></pre>
-</doc-codeblock></div>
-<p>Job phải được gửi đến từ head node của một cluster. Job scheduler sẽ sắp xếp job ở nơi nó sẽ giữ nguyên cho đến khi nó có đủ mức độ ưu tiên để chạy trên compute node. Tùy thuộc vào tính chất job và nguồn lực sẵn có, thời gian xếp hàng sẽ thay đổi từ vài giây đến nhiều ngày. Để kiểm tra trạng thái của các job được xếp hàng đợi và đang chạy, hãy sử dụng lệnh sau:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">$ squeue -u &lt;username&gt;</code></pre>
-</doc-codeblock></div>
-<p>Để xem thời gian bắt đầu dự kiến của các job của bạn:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">$ squeue -u &lt;username&gt; --start</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="các-câu-lệnh-slurmthường-dùng">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#các-câu-lệnh-slurmthường-dùng">#</doc-anchor-trigger>
-        <span><strong>Các câu lệnh Slurm thường dùng</strong></span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="tìm-hiểu-trước-về-hệ-thống">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#tìm-hiểu-trước-về-hệ-thống">#</doc-anchor-trigger>
-        <span><strong>Tìm hiểu trước về hệ thống</strong></span>
-    </h3>
-</doc-anchor-target>
-<div class="table-wrapper scrollbar overflow-hidden">
-<table class="comfortable">
-<thead>
-<tr>
-<th>Lệnh</th>
-<th>Mô tả</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>checkquota (chưa hoạt động)</td>
-<td>xem việc sử dụng dung lượng ổ đĩa của bạn, kiểm tra xem bạn có đủ dung lượng trong các thư mục của mình không, liên kết ở phía dưới để yêu cầu thêm dung lượng</td>
-</tr>
-<tr>
-<td>cat /etc/os-release</td>
-<td>thông tin về hệ điều hành</td>
-</tr>
-<tr>
-<td>lscpu</td>
-<td>thông tin về CPU trên nút cụ thể đó</td>
-</tr>
-<tr>
-<td>snodes</td>
-<td>thông tin về các nút tính toán</td>
-</tr>
-<tr>
-<td>shownodes</td>
-<td>thông tin về các nút tính toán (dễ đọc hơn)</td>
-</tr>
-<tr>
-<td>sinfo</td>
-<td>xem tất cả các nút của cụm đang được sử dụng như thế nào (ví dụ: chúng có ở trạng thái rảnh không? ngừng hoạt động? đang được sử dụng?)</td>
-</tr>
-<tr>
-<td>sininfo -p gpu</td>
-<td>xem GPU đang được sử dụng như thế nào</td>
-</tr>
-<tr>
-<td>qos</td>
-<td>&quot;quality of service&quot; - xem cách phân chia job và giới hạn trên mỗi phân vùng</td>
-</tr>
-<tr>
-<td>top</td>
-<td>hiển thị hoạt động của bộ xử lý, các lệnh đang chạy (nhấn &#x27;q&#x27; để thoát)</td>
-</tr>
-<tr>
-<td>htop</td>
-<td>hiển thị hoạt động của bộ xử lý, các lệnh đang chạy, có màu sắc (nhấn &#x27;q&#x27; để thoát)</td>
-</tr>
-<tr>
-<td>sshare</td>
-<td>hiển thị các chia sẻ cụm được chỉ định bởi nhóm</td>
-</tr>
-<tr>
-<td>sprio -w</td>
-<td>xem mức độ ưu tiên job được chỉ định như thế nào (hiển thị trọng số cho từng yếu tố)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<doc-anchor-target id="gửi-một-job">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#gửi-một-job">#</doc-anchor-trigger>
-        <span><strong>Gửi một Job</strong></span>
-    </h3>
-</doc-anchor-target>
-<div class="table-wrapper scrollbar overflow-hidden">
-<table class="comfortable">
-<thead>
-<tr>
-<th>Lệnh</th>
-<th>Mô tả</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sbatch</td>
-<td>gửi job của bạn tới job scheduler</td>
-</tr>
-<tr>
-<td>srun</td>
-<td>yêu cầu một interactive job trên computing node (xem bên dưới)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<doc-anchor-target id="sau-khi-job-được-submit">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#sau-khi-job-được-submit">#</doc-anchor-trigger>
-        <span><strong>Sau khi Job được submit</strong></span>
-    </h3>
-</doc-anchor-target>
-<div class="table-wrapper scrollbar overflow-hidden">
-<table class="comfortable">
-<thead>
-<tr>
-<th>Yêu cầu</th>
-<th>Sự miêu tả</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>squeue</td>
-<td>hiển thị tất cả các job đang chạy hoặc chờ chạy</td>
-</tr>
-<tr>
-<td>squeue -u <username></td>
-<td>xem job của bạn đang chạy hoặc đang chờ chạy</td>
-</tr>
-<tr>
-<td>squeue --start</td>
-<td>báo cáo thời gian bắt đầu dự kiến ​​cho các job đang chờ xử lý</td>
-</tr>
-<tr>
-<td>squeue -j <jobid></td>
-<td>hiển thị các nút đang được sử dụng cho job đang chạy của bạn</td>
-</tr>
-<tr>
-<td>scontrol show jobid <jobid></td>
-<td>hiển thị thông tin chi tiết về job</td>
-</tr>
-<tr>
-<td>sprio</td>
-<td>hiển thị mức độ ưu tiên được giao cho các job đang chờ xử lý</td>
-</tr>
-<tr>
-<td>slurmtop</td>
-<td>hiển thị job hiện tại</td>
-</tr>
-<tr>
-<td>scancel</td>
-<td>hủy job (ví dụ: scancel 2534640)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<doc-anchor-target id="sau-khi-job-hoàn-thành">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#sau-khi-job-hoàn-thành">#</doc-anchor-trigger>
-        <span><strong>Sau khi job hoàn thành</strong></span>
-    </h3>
-</doc-anchor-target>
-<div class="table-wrapper scrollbar overflow-hidden">
-<table class="comfortable">
-<thead>
-<tr>
-<th>Lệnh</th>
-<th>Mô tả</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>seff <jobid></td>
-<td>xem kết quả job đã hoàn thành</td>
-</tr>
-<tr>
-<td>shistory</td>
-<td>hiển thị lịch sử job của bạn</td>
-</tr>
-<tr>
-<td>jobstats <jobid></td>
-<td>xem số liệu chính xác về bộ nhớ, CPU và GPU từ các job. Xem thêm về số liệu thống kê job.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<doc-anchor-target id="your-first-slurm-job">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#your-first-slurm-job">#</doc-anchor-trigger>
-        <span><strong>Your First Slurm Job</strong></span>
-    </h2>
-</doc-anchor-target>
-<p>Nếu bạn chưa quen với cụm HPC hoặc Slurm thì hãy xem hướng dẫn này để chạy job đầu tiên của bạn.</p>
-<doc-anchor-target id="terminology">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#terminology">#</doc-anchor-trigger>
-        <span><strong>Terminology</strong></span>
-    </h2>
-</doc-anchor-target>
-<p>Khi bạn SSH đến một cụm, bạn đang kết nối với head node, node này được tất cả người dùng chia sẻ. Việc chạy job trên nút đăng nhập bị <strong>CẤM</strong>. Các job hàng loạt và tương tác phải được gửi từ head node đến bộ lập lịch job của Slurm bằng cách sử dụng lệnh “srun”, &quot;sbatch&quot; và &quot;salloc&quot;. Sau khi xếp hàng đợi, các job sẽ được gửi đến các compute node thực hiện job tính toán thực tế.</p>
-<p>Mỗi CPU có nhiều lõi CPU. Chạy lệnh &quot;snodes&quot; và xem cột &quot;CPUS&quot; ở đầu ra để xem số lượng lõi CPU trên mỗi nút cho một cụm nhất định. Bạn sẽ thấy các giá trị như 28, 32, 40, 96 và 128. Nếu job của bạn yêu cầu số lượng lõi CPU trên mỗi nút trở xuống thì hầu như bạn luôn nên sử dụng --nodes=1 trong tập lệnh Slurm của mình. Các giá trị cho --ntasks và --cpus-per-task được giải thích rõ nhất bằng các ví dụ bên dưới.</p>
-<p>Lệnh --time đặt thời gian chạy tối đa cần thiết cho job của bạn. Bạn nên đặt giá trị này một cách chính xác nhưng hãy tính thêm 20% vì job sẽ bị hủy nếu nó không hoàn thành trước khi đạt đến giới hạn. Để đặt yêu cầu bộ nhớ của job bằng cách sử dụng --mem-per-cpu hoặc --mem.</p>
-<doc-anchor-target id="interactive-allocations-with-salloc">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#interactive-allocations-with-salloc">#</doc-anchor-trigger>
-        <span><strong>Interactive Allocations with salloc</strong></span>
-    </h2>
-</doc-anchor-target>
-<p>Nút đăng nhập của cụm chỉ có thể được sử dụng cho job tương tác rất nhẹ sử dụng tối đa 10% máy (lõi CPU và bộ nhớ) trong tối đa 10 phút. Điều này được thực thi nghiêm ngặt vì việc vi phạm quy tắc này thường có thể ảnh hưởng xấu đến job của những người dùng khác. Job tương tác chuyên sâu phải được thực hiện trên các nút điện toán bằng lệnh salloc. Để hoạt động tương tác trên nút điện toán có 1 lõi CPU và 4 GB bộ nhớ trong 20 phút, hãy sử dụng lệnh sau:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">$ salloc --nodes=1 --ntasks=1 --mem=4G --time=00:20:00</code></pre>
-</doc-codeblock></div>
-<p>Giống như các job hàng loạt, việc phân bổ tương tác sẽ đi qua hệ thống xếp hàng. Điều này có nghĩa là khi clusterr bận, bạn sẽ phải đợi trước khi được cấp phân bổ. Bạn sẽ thấy đầu ra như sau:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">salloc: Pending job allocation 32280311
-salloc: job 32280311 queued and waiting for resources
-salloc: job 32280311 has been allocated resources
-salloc: Granted job allocation 32280311
-salloc: Waiting for resource configuration
-salloc: Nodes della-r4c1n13 are ready for job
-[aturing@della-r4c1n13 ~]$</code></pre>
-</doc-codeblock></div>
-<p>Sau thời gian chờ đợi, bạn sẽ được đưa vào một shell trên compute node nơi bạn có thể bắt đầu làm việc một cách tương tác. Lưu ý rằng việc phân bổ của bạn sẽ chấm dứt khi đạt đến giới hạn thời gian. Bạn có thể sử dụng lệnh thoát để kết thúc phiên và quay lại nút đăng nhập bất cứ lúc nào.</p>
-<p><strong>GPU</strong></p>
-<p>Để yêu cầu một nút có GPU:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">$ salloc --nodes=1 --ntasks=1 --mem=4G --time=00:20:00 --gres=gpu:1 </code></pre>
-</doc-codeblock></div>
-<p><strong>Graphics</strong></p>
-<p>Nếu bạn đang làm việc với đồ họa thì hãy bật chuyển tiếp X11 (và xem các yêu cầu bổ sung):</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">$ salloc --nodes=1 --ntasks=1 --mem=4G --time=00:20:00 --x11</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="gpu-job">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#gpu-job">#</doc-anchor-trigger>
-        <span><strong>GPU Job</strong></span>
-    </h2>
-</doc-anchor-target>
-<p>Xem số lượng GPU trên mỗi cluster tại trang thông tin cluster đó. Để sử dụng GPU trong job, hãy thêm câu lệnh SBATCH với tùy chọn --gres:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">#!/bin/bash
-#SBATCH --job-name=mnist         # create a short name for your job
-#SBATCH --nodes=1                # node count
-#SBATCH --ntasks=1               # total number of tasks across all nodes
-#SBATCH --cpus-per-task=1        # cpu-cores per task (&gt;1 if multi-threaded tasks)
-#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
-#SBATCH --gres=gpu:1             # number of gpus per node
-#SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
-
-module purge
-module load anaconda3/2023.3
-conda activate tf2-gpu
-
-python myscript.py</code></pre>
-</doc-codeblock></div>
-<p>Ví dụ: để sử dụng bốn GPU trên mỗi nút, dòng thích hợp sẽ là:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">#SBATCH --gres=gpu:4</code></pre>
-</doc-codeblock></div>
-<p>QUAN TRỌNG: Chỉ những mã được viết rõ ràng để chạy trên GPU mới có thể tận dụng GPU. Việc thêm tùy chọn --gres vào tập lệnh Slurm cho mã chỉ dành cho CPU sẽ không tăng tốc thời gian thực thi nhưng sẽ lãng phí tài nguyên, tăng thời gian xếp hàng và giảm mức độ ưu tiên của lần gửi job tiếp theo. Hơn nữa, một số mã chỉ được viết để sử dụng một GPU duy nhất nên tránh yêu cầu nhiều GPU trừ khi mã của bạn có thể sử dụng chúng. Nếu mã có thể sử dụng nhiều GPU thì bạn nên tiến hành phân tích tỷ lệ để tìm ra số lượng GPU tối ưu để sử dụng.</p>
-<p>Xem <a href="../introduce-to-cluster/">thông tin hệ thống</a> để biết về cấu hình của server. Lưu ý rằng một số mã yêu cầu sử dụng nhiều lõi CPU cùng với GPU để có hiệu suất tối ưu.</p>
-<doc-anchor-target id="jobarrays">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#jobarrays">#</doc-anchor-trigger>
-        <span><strong>Job Arrays</strong></span>
-    </h2>
-</doc-anchor-target>
-<p>Mảng job được dùng để chạy cùng một job nhiều lần mà chỉ có những khác biệt nhỏ giữa các job. Ví dụ: giả sử bạn cần chạy 100 job, mỗi job có một giá trị hạt giống khác nhau cho trình tạo số ngẫu nhiên. Hoặc có thể bạn muốn chạy cùng một tập lệnh phân tích dữ liệu cho từng file trong tổng số 50 files. Job array là lựa chọn tốt nhất cho những trường hợp như vậy.</p>
-<p>Dưới đây là một ví dụ về tập lệnh Slurm để chạy Python trong đó có 5 job:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">#!/bin/bash
-#SBATCH --job-name=array-job     # create a short name for your job
-#SBATCH --output=slurm-%A.%a.out # stdout file
-#SBATCH --error=slurm-%A.%a.err  # stderr file
-#SBATCH --nodes=1                # node count
-#SBATCH --ntasks=1               # total number of tasks across all nodes
-#SBATCH --cpus-per-task=1        # cpu-cores per task (&gt;1 if multi-threaded tasks)
-#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
-#SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
-#SBATCH --array=0-4              # job array with index values 0, 1, 2, 3, 4
-
-echo &quot;My SLURM_ARRAY_JOB_ID is $SLURM_ARRAY_JOB_ID.&quot;
-echo &quot;My SLURM_ARRAY_TASK_ID is $SLURM_ARRAY_TASK_ID&quot;
-echo &quot;Executing on the machine:&quot; $(hostname)
-
-module purge
-module load anaconda3/2023.3
-conda activate myenv
-
-python myscript.py</code></pre>
-</doc-codeblock></div>
-<p>Dòng chính trong tập lệnh Slurm ở trên là:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">#SBATCH --array=0-4</code></pre>
-</doc-codeblock></div>
-<p>Trong ví dụ này, tập lệnh Slurm sẽ chạy năm job. Mỗi job sẽ có giá trị SLURM_ARRAY_TASK_ID khác nhau (tức là 0, 1, 2, 3, 4). Giá trị của SLURM_ARRAY_TASK_ID có thể được sử dụng để phân biệt các job trong mảng. Xem ví dụ đầy đủ về Python. Người ta có thể chuyển SLURM_ARRAY_TASK_ID cho tệp thực thi dưới dạng tham số dòng lệnh hoặc tham chiếu nó dưới dạng biến môi trường. Sử dụng cách tiếp cận thứ hai, một vài dòng đầu tiên của tập lệnh Python (được gọi là myscript.py ở trên) có thể trông như thế này:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">import os
-idx = int(os.environ[&quot;SLURM_ARRAY_TASK_ID&quot;])
-parameters = [2.5, 5.0, 7.5, 10.0, 12.5]
-myparam = parameters[idx]
-# execute the rest of the script using myparam</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="các-job-sử-dụng-bộ-nhớ-lớn">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#các-job-sử-dụng-bộ-nhớ-lớn">#</doc-anchor-trigger>
-        <span>Các job sử dụng bộ nhớ lớn</span>
-    </h2>
-</doc-anchor-target>
-<p>Một lợi thế của việc sử dụng cụm HPC trên máy tính xách tay hoặc máy trạm của bạn là lượng RAM lớn có sẵn trên mỗi nút. Ví dụ: trên một số cụm, bạn có thể chạy một job với bộ nhớ 100 GB. Điều này có thể rất hữu ích khi làm việc với một tập dữ liệu lớn. Để tìm hiểu xem mỗi nút có bao nhiêu bộ nhớ, hãy chạy lệnh snodes và xem cột MEMORY tính bằng megabyte.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">#!/bin/bash
-#SBATCH --job-name=slurm-test    # create a short name for your job
-#SBATCH --nodes=1                # node count
-#SBATCH --ntasks=1               # total number of tasks across all nodes
-#SBATCH --cpus-per-task=1        # cpu-cores per task (&gt;1 if multi-threaded tasks)
-#SBATCH --mem=100G               # memory per node (4G per cpu-core is default)
-#SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
-
-module purge
-module load anaconda3/2023.3
-conda activate micro-env
-
-python myscript.py</code></pre>
-</doc-codeblock></div>
-<p>Ví dụ trên chạy tập lệnh Python sử dụng 1 lõi CPU và 100 GB bộ nhớ. Trong tất cả các tập lệnh Slurm, bạn nên sử dụng giá trị chính xác cho bộ nhớ cần thiết nhưng thêm 20% để đảm bảo an toàn. Để biết thêm, hãy xem Phân bổ bộ nhớ.</p>
-<doc-anchor-target id="báo-cáo-hiện-tại-chưa-hỗ-trợ">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#báo-cáo-hiện-tại-chưa-hỗ-trợ">#</doc-anchor-trigger>
-        <span><strong>Báo cáo (hiện tại chưa hỗ trợ)</strong></span>
-    </h2>
-</doc-anchor-target>
-<p>Nếu bạn đưa chỉ thị thư SBATCH bên dưới vào tập lệnh Slurm thì bạn sẽ nhận được email sau khi mỗi job kết thúc:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">#SBATCH --mail-type=end
-#SBATCH --mail-user=&lt;yourEmail&gt;</code></pre>
-</doc-codeblock></div>
-<p>Dưới đây là một báo cáo mẫu:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-none"><code v-pre class="language-none">================================================================================
-                              Slurm Job Statistics
-================================================================================
-         Job ID: 1234567
-  NetID/Account: aturing/math
-       Job Name: sys_logic_ordinals.sh
-          State: COMPLETED
-          Nodes: 1
-      CPU Cores: 1
-     CPU Memory: 64GB
-           GPUs: 1
-  QOS/Partition: gpu-short/gpu
-        Cluster: della
-     Start Time: Thu May 11, 2023 at 1:52 PM
-       Run Time: 14:27:09
-     Time Limit: 16:00:00
-
-                              Overall Utilization
-================================================================================
-  CPU utilization  [|||||||||||||||||||||||||||||||||||||||||||||| 93%]
-  CPU memory usage [|||||||||||||||                                30%]
-  GPU utilization  [||||||||||||||||||||||||||||||||||||||||||     85%]
-  GPU memory usage [|||||||||||||||||||||||||||||||||||||||||||||| 92%]
-
-                              Detailed Utilization
-================================================================================
-  CPU utilization per node (CPU time used/run time)
-      della-l05g2: 00:25:16/00:27:09 (efficiency=93.1%)
-
-  CPU memory usage per node - used/allocated
-      della-l05g2: 19.3GB/64.0GB (19.3GB/64.0GB per core of 1)
-
-  GPU utilization per node
-      della-l05g2 (GPU 1): 85.3%
-
-  GPU memory usage per node - maximum used/total
-      della-l05g2 (GPU 1): 73.6GB/80.0GB (92.0%)
-
-                                     Notes
-================================================================================</code></pre>
-</doc-codeblock></div>
-<p>Báo cáo cung cấp thông tin về thời gian chạy, mức sử dụng CPU, mức sử dụng bộ nhớ, v.v. Bạn nên kiểm tra các giá trị này để xác định xem bạn có đang sử dụng tài nguyên đúng cách hay không. Xem trang Thống kê job để biết thêm thông tin.</p>
-<p>Thời gian xếp hàng của bạn một phần được xác định bởi lượng tài nguyên bạn yêu cầu. Giá trị chia sẻ công bằng của bạn, một phần quyết định mức độ ưu tiên của job tiếp theo của bạn, sẽ giảm tỷ lệ với lượng tài nguyên bạn đã sử dụng trong 30 ngày trước đó.</p>
-<doc-anchor-target id="tài-liệu-đọc-thêm">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#tài-liệu-đọc-thêm">#</doc-anchor-trigger>
-        <span><strong>Tài liệu đọc thêm</strong></span>
-    </h2>
-</doc-anchor-target>
-<p><strong><a href="https://researchcomputing.princeton.edu/education/external-online-resources/slurm">external resources for learning Slurm</a></strong>.</p>
 
                 
                 <!-- Required only on API pages -->
