@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/hpc-documentation">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825505658297">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825508070537">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.0.1">
 
     <!-- Primary Meta Tags -->
-    <title>Hướng dẫn sử dụng server nghi&#234;n cứu tại HCMUS</title>
-    <meta name="title" content="Hướng dẫn sử dụng server nghiên cứu tại HCMUS">
-    <meta name="description" content="Core HPC (High Performance Computing Core) được sử dụng để chạy nhiều cluster trong ĐH-KHTN. Hệ thống lập lịch - job scheduler mà chúng tôi sử dụng trên">
+    <title>Hướng dẫn sử dụng SLURM cho người d&#249;ng cuối</title>
+    <meta name="title" content="Hướng dẫn sử dụng SLURM cho người dùng cuối">
+    <meta name="description" content="SLURM (Simple Linux Utility for Resource Management) là một hệ thống quản lý tài nguyên và điều phối tác vụ (job scheduler) mã nguồn mở, được sử dụng rộng">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://hcmus-intelligent-systems-laboratory.github.io/hpc-documentation/">
@@ -21,19 +21,19 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hcmus-intelligent-systems-laboratory.github.io/hpc-documentation/">
-    <meta property="og:title" content="Hướng dẫn sử dụng server nghiên cứu tại HCMUS">
-    <meta property="og:description" content="Core HPC (High Performance Computing Core) được sử dụng để chạy nhiều cluster trong ĐH-KHTN. Hệ thống lập lịch - job scheduler mà chúng tôi sử dụng trên">
+    <meta property="og:title" content="Hướng dẫn sử dụng SLURM cho người dùng cuối">
+    <meta property="og:description" content="SLURM (Simple Linux Utility for Resource Management) là một hệ thống quản lý tài nguyên và điều phối tác vụ (job scheduler) mã nguồn mở, được sử dụng rộng">
     <meta property="og:site_name" content="HPC guide">
     <meta property="og:locale" content="en_US">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link id="retype-favicon" rel="icon" href="static/logo.webp" />
-    <link href="resources/css/retype.css?v=4.0.1.825505658297" rel="stylesheet">
+    <link href="resources/css/retype.css?v=4.0.1.825508070537" rel="stylesheet">
 
-    <script data-cfasync="false" src="resources/js/config.js?v=4.0.1.825505658297" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="resources/js/config.js?v=4.0.1.825508070537" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="resources/js/retype.js?v=4.0.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="resources/js/lunr.js?v=4.0.1.825505658297" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="resources/js/lunr.js?v=4.0.1.825508070537" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -155,52 +155,14 @@
                 <!-- Rendered if sidebar right is enabled -->
                 <div id="retype-sidebar-right-toggle"></div>
                 <!-- Page content  -->
-<doc-anchor-target id="hướng-dẫn-sử-dụng-server-nghiên-cứu-tại-hcmus" class="break-words">
+<doc-anchor-target id="hướng-dẫn-sử-dụng-slurm-cho-người-dùng-cuối" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#hướng-dẫn-sử-dụng-server-nghiên-cứu-tại-hcmus">#</doc-anchor-trigger>
-        <span><strong>Hướng dẫn sử dụng server nghiên cứu tại HCMUS</strong></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#hướng-dẫn-sử-dụng-slurm-cho-người-dùng-cuối">#</doc-anchor-trigger>
+        <span><strong>Hướng dẫn sử dụng SLURM cho người dùng cuối</strong></span>
     </h1>
 </doc-anchor-target>
-<p>Core HPC (High Performance Computing Core) được sử dụng để chạy nhiều cluster trong ĐH-KHTN. Hệ thống lập lịch - job scheduler mà chúng tôi sử dụng trên các cluster này được gọi là <strong>Slurm</strong>. Hướng dẫn này đã được chuẩn bị để giúp mọi người sử dụng hệ thống một cách hiệu quả. Mỗi trang tập hợp các liên kết đến các tài nguyên cơ bản giới thiệu chúng theo thứ tự thích để người dùng có thể sử dụng được hệ thống.</p>
-<p>Tất cả người dùng hệ thống đều phải có kiến thức làm việc cơ bản về hệ thống. Điều này rất quan trọng vì người dùng thể <em>vô tình lãng phí tài nguyên hoặc thậm chí ảnh hưởng xấu đến công việc của người khác</em>.</p>
-<p>Miễn trừ trách nhiệm: tài liệu này là một bản dịch phù hợp với hệ thống hiện tại của server Khoa CNTT - ĐH KHTN HCM- được dịch từ <a href="https://researchcomputing.princeton.edu/">https://researchcomputing.princeton.edu/</a>.</p>
-<p>Outline hướng dẫn này bao gồm các chủ đề sau:</p>
-<ol>
-<li>Giới thiệu về cluster
-<ul class="contains-task-list">
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Mô tả kiến trúc cluster</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Làm thế nào để có được một tài khoản</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Cách kết nối với cluster (Phải đọc)</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Thông tin server Trường ĐH.KHTN.</li>
-</ul>
-</li>
-<li>Hướng dẫn sử dụng server
-<ul class="contains-task-list">
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Kiến thức nền Linux</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Giới thiệu về Slurm</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Hướng dẫn từng bước để chạy tác vụ Slurm đầu tiên (Phải đọc)</li>
-</ul>
-</li>
-<li>Software Modules
-<ul class="contains-task-list">
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Cách sử dụng phần mềm đã cài đặt trên cluster (thông qua module)</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Cách cài đặt phần mềm riêng (cần cài qua apt-install hoặc yêu cầu sudo) -solutions: pyxis, request, spack, modules (WIP))</li>
-</ul>
-</li>
-<li>Quy định
-<ul class="contains-task-list">
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Quy định về sử dụng tài nguyên (Phải đọc)</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Quy định về quản lý tác vụ (Phải đọc)</li>
-</ul>
-</li>
-<li>Liên hệ nhờ giúp đỡ
-<ul class="contains-task-list">
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> FAQ (Các câu hỏi thường gặp)</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Các bước hỗ trợ</li>
-</ul>
-</li>
-<li>Các thuật ngữ nên đọc</li>
-</ol>
+<p>SLURM (Simple Linux Utility for Resource Management) là một hệ thống quản lý tài nguyên và điều phối tác vụ (job scheduler) mã nguồn mở, được sử dụng rộng rãi trong các hệ thống tính toán hiệu năng cao (High Performance Computing - HPC). Thay vì để từng người dùng truy cập trực tiếp vào tài nguyên tính toán (như các node hay CPU), SLURM giúp phân phối tài nguyên một cách công bằng, hiệu quả, và dễ quản lý.</p>
+<p>Người dùng nên làm quen với cú pháp và các lệnh cơ bản để sử dụng SLURM hiệu quả. Hãy thường xuyên tham khảo tài liệu và các hướng dẫn cụ thể khi cần thiết để giải quyết các vấn đề phát sinh trong quá trình sử dụng.</p>
 
                 
                 <!-- Required only on API pages -->
@@ -216,7 +178,7 @@
                         <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l rounded-r-lg transition-colors duration-150 relative hover:z-5" href="contents/introduce-to-cluster/">
                             <span>
                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                <span class="block mt-1">Kiến thức cơ bản về cluster</span>
+                                <span class="block mt-1">Khái niệm và yêu cầu cơ bản</span>
                             </span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                         </a>

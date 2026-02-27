@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="turbo-root" content="/hpc-documentation">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825505658297">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825508070537">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.0.1">
 
     <!-- Primary Meta Tags -->
-    <title>SLURM</title>
-    <meta name="title" content="SLURM">
-    <meta name="description" content="Trước khi bắt đầu, bạn nên nắm một số kiến thức cơ bản về Linux.">
+    <title>Chạy một job đơn giản</title>
+    <meta name="title" content="Chạy một job đơn giản">
+    <meta name="description" content="Dùng srun chạy trực tiếp:">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://hcmus-intelligent-systems-laboratory.github.io/hpc-documentation/contents/usage/">
@@ -21,19 +21,19 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hcmus-intelligent-systems-laboratory.github.io/hpc-documentation/contents/usage/">
-    <meta property="og:title" content="SLURM">
-    <meta property="og:description" content="Trước khi bắt đầu, bạn nên nắm một số kiến thức cơ bản về Linux.">
+    <meta property="og:title" content="Chạy một job đơn giản">
+    <meta property="og:description" content="Dùng srun chạy trực tiếp:">
     <meta property="og:site_name" content="HPC guide">
     <meta property="og:locale" content="en_US">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
     <link id="retype-favicon" rel="icon" href="../../static/logo.webp" />
-    <link href="../../resources/css/retype.css?v=4.0.1.825505658297" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.0.1.825508070537" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.0.1.825505658297" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.0.1.825508070537" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.0.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.0.1.825505658297" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.0.1.825508070537" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -155,14 +155,56 @@
                 <!-- Rendered if sidebar right is enabled -->
                 <div id="retype-sidebar-right-toggle"></div>
                 <!-- Page content  -->
-<doc-anchor-target id="slurm" class="break-words">
+<doc-anchor-target id="chạy-một-job-đơn-giản" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#slurm">#</doc-anchor-trigger>
-        <span><strong>SLURM</strong></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#chạy-một-job-đơn-giản">#</doc-anchor-trigger>
+        <span><strong>Chạy một job đơn giản</strong></span>
     </h1>
 </doc-anchor-target>
-<p>Trước khi bắt đầu, bạn nên nắm một số kiến thức cơ bản về Linux.</p>
-<p><a href="https://www.notion.so/Ngu-n-t-i-li-u-h-c-s-d-ng-Linux-5886beccfb4d4907a0fcd1b4ee20eb00?pvs=21">Nguồn tài liệu học sử dụng Linux</a></p>
+<ol type="a" start="1">
+<li>Dùng <code translate="no" v-pre>srun</code> chạy trực tiếp:</li>
+</ol>
+<p><code translate="no" v-pre>srun</code> là lệnh được dùng để chạy một chương trình hoặc lệnh trực tiếp trên hệ thống tính toán sử dụng SLURM. Khi dùng <code translate="no" v-pre>srun</code>, bạn sẽ yêu cầu tài nguyên (CPU, RAM, GPU,...) và SLURM sẽ cấp phát tài nguyên tương ứng để chạy chương trình. <code translate="no" v-pre>srun</code> phù hợp cho các tác vụ nhanh, thử nghiệm hoặc chạy tương tác trong môi trường dòng lệnh. Ví dụ được minh họa bên dưới.</p>
+<ul>
+<li>Yêu cầu 4GB RAM và 1 GPU:</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">srun --mem=4G --gres=gpu:1 --pty bash</code></pre>
+</doc-codeblock></div>
+<p>Khi chạy lệnh trên, yêu cầu sẽ vào hàng đợi, nếu SLURM tìm đủ tài nguyên để cấp phát, job này sẽ được khởi chạy và khi đó người dùng sẽ được kết nối đến một trong các compute nodes và truy cập tới vùng tài nguyên được yêu cầu bao gồm 4GB RAM và 1 GPU.</p>
+<ol type="a" start="2">
+<li>Dùng <code translate="no" v-pre>sbatch</code> để gửi script:</li>
+</ol>
+<p><code translate="no" v-pre>sbatch</code> là lệnh dùng để gửi một script (thường là file .sh) vào hệ thống SLURM để chạy không đồng bộ. Nghĩa là bạn không cần chờ kết quả ngay trên terminal - hệ thống sẽ xếp hàng, cấp phát tài nguyên khi có thể và chạy script của bạn. <code translate="no" v-pre>sbatch</code> phù hợp cho các tác vụ dài, tốn nhiều thời gian, phức tạp hoặc cần nhiều tài nguyên.</p>
+<p>Một script SLURM cần phải bao gồm ba phần chính:</p>
+<ul>
+<li><p>Quy định tài nguyên: Kích thước bộ nhớ, số lượng CPU cores, số nút, thời gian chạy tối đa.</p>
+</li>
+<li><p>Thiết lập môi trường: Tải các module cần thiết hoặc kích hoạt môi trường ảo.</p>
+</li>
+<li><p>Lệnh thực thi: Lệnh mà người dùng muốn chạy.</p>
+</li>
+</ul>
+<p>Dưới đây là một ví dụ về script SLURM để chạy một chương trình Python:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">#!/bin/bash
+#SBATCH --job-name=myjob           # Tên job
+#SBATCH --nodes=1                   # Số lượng compute node cần dùng
+#SBATCH --ntasks=1                  # Số lượng tác vụ
+#SBATCH --cpus-per-task=1           # Số CPU core trên mỗi tác vụ
+#SBATCH --mem-per-cpu=2G            # Bộ nhớ trên mỗi core
+#SBATCH --time=00:01:00             # Thời gian chạy tối đa (HH:MM:SS)
+module purge
+conda activate myenv
+python myscript.py                  # Chạy chương trình Python</code></pre>
+</doc-codeblock></div>
+<p>Để gửi một job, người dùng sử dụng lệnh <code translate="no" v-pre>sbatch</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-none"><code v-pre class="language-none">$ sbatch job.slurm</code></pre>
+</doc-codeblock></div>
+<p>Trong đó <code translate="no" v-pre>job.slurm</code> là tên của file script SLURM.
+Để kiểm tra kết quả của quá trình chạy script bằng lệnh <code translate="no" v-pre>sbatch</code>, các output của các câu lệnh trong script sẽ được ghi vào 1 file <code translate="no" v-pre>&lt;job_id&gt;.out</code>.</p>
+<p>Lưu ý quan trọng: Để tiến hành huấn luyện một mô hình AI hoặc chạy một script nào đó trên SLURM, bạn nên chạy các câu lệnh của mình bằng lệnh <code translate="no" v-pre>srun</code> trước và đảm bảo rằng toàn bộ các câu lệnh trong script của bạn chạy đúng và trả ra kết quả, sau đó bạn đưa các câu lệnh theo đúng trình tự vào script của lệnh sbatch và nộp lên để SLURM xử lý ngầm.</p>
 <doc-anchor-target id="giới-thiệu-slurm">
     <h1>
         <doc-anchor-trigger class="header-anchor-trigger" to="#giới-thiệu-slurm">#</doc-anchor-trigger>
@@ -601,20 +643,20 @@ python myscript.py</code></pre>
             
                 <nav id="retype-nextprev" class="print:hidden flex mt-14">
                     <div class="w-1/2">
-                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../contents/introduce-to-cluster/registration/">
+                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../contents/introduce-to-cluster/">
                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                             <span>
                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                <span class="block mt-1">Hướng dẫn đăng ký tài khoản</span>
+                                <span class="block mt-1">Khái niệm và yêu cầu cơ bản</span>
                             </span>
                         </a>
                     </div>
             
                     <div class="w-1/2">
-                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../contents/usage/info/">
+                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../contents/software-modules/">
                             <span>
                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                <span class="block mt-1">Hệ thống server Khoa Công nghệ Thông tin</span>
+                                <span class="block mt-1">Kiểm tra trạng thái job</span>
                             </span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                         </a>
