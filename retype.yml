@@ -1,6 +1,6 @@
 input: .
 output: .retype
-url: slurm.nhtlongcs.com
+url: hcmus-intelligent-systems-laboratory.github.io
 favicon: static/logo.webp
 branding:
   title: HPC guide
