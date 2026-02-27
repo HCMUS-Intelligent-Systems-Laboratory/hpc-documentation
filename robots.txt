@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hcmus-intelligent-systems-laboratory.github.io/hpc-documentation/sitemap.xml.gz
